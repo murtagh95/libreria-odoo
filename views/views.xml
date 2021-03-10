@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- VISTA TIPO ARBOL PARA EL MODELO CATEGORIA -->
+        <record model="ir.ui.view" id="libreria.categoria_tree">
+            <!-- Nombre de la vista-->
+            <field name="name">libreria.categoria.tree</field>
+
+            <!-- Sobre que objeto trabaja(definido con _name)-->
+            <field name="model">libreria.categoria</field>
+
+            <!-- Tipo de vista-->
+            <field name="arch" type="xml">
+                <!-- Vista de tipo arbol-->
+                <tree>
+                    <!-- Definimos que tipo de campos tendra la vista-->
+                    <field name="name"></field>
+                    <field name="description"></field>
+                </tree>
+            </field>
+        </record>
+
+        <!-- VISTA TIPO FORMULARIO PARA EL MODELO CATEGORIA -->
+        <record model="ir.ui.view" id="libreria.categoria_form">
+            <!-- Nombre de la vista-->
+            <field name="name">libreria.categoria.form</field>
+
+            <!-- Sobre que objeto trabaja(definido con _name)-->
+            <field name="model">libreria.categoria</field>
+
+            <!-- Tipo de vista-->
+            <field name="arch" type="xml">
+                <!-- Vista de tipo formulario-->
+                <form>
+                    <group colspan="2" col="2">
+                        <!-- Definimos que tipo de campos tendra la vista-->
+                        <field name="name"></field>
+                        <field name="description"></field>
+                        <!-- Agregamos una vista de tipo arbol -->
+                        <field name="libros">
+                            <tree>
+                                <field name="name"></field>
+                                <field name="precio"></field>
+                                <field name="ejemplares"></field>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+
+        <!-- VISTA TIPO ARBOL PARA EL MODELO LIBROS -->
+        <record model="ir.ui.view" id="libreria.libro_tree">
+            <!-- Nombre de la vista-->
+            <field name="name">libreria.libro.tree</field>
+
+            <!-- Sobre que objeto trabaja(definido con _name)-->
+            <field name="model">libreria.libro</field>
+
+            <!-- Tipo de vista-->
+            <field name="arch" type="xml">
+                <!-- Vista de tipo arbol-->
+                <tree>
+                    <!-- Definimos que tipo de campos tendra la vista-->
+                    <field name="name"></field>
+                    <field name="precio"></field>
+                    <field name="ejemplares"></field>
+                </tree>
+            </field>
+        </record>
+
+        <!-- VISTA TIPO FORMULARIO PARA EL MODELO LIBROS -->
+        <record model="ir.ui.view" id="libreria.libro_form">
+            <!-- Nombre de la vista-->
+            <field name="name">libreria.libro.form</field>
+
+            <!-- Sobre que objeto trabaja(definido con _name)-->
+            <field name="model">libreria.libro</field>
+
+            <!-- Tipo de vista-->
+            <field name="arch" type="xml">
+                <!-- Vista de tipo formulario-->
+                <form>
+                    <group colspan="2" col="2">
+                        <!-- Definimos que tipo de campos tendra la vista-->
+                        <field name="name"></field>
+                        <field name="precio"></field>
+                        <field name="ejemplares"></field>
+                        <field name="fecha"></field>
+                        <field name="segunMano"></field>
+                        <field name="estado"></field>
+                        <field name="categoria"></field>
+                        <field name="importeTotal"></field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Vista de tipo busqueda -->
+        <record model="ir.ui.view" id="libreria.libro_search_view">
+            <field name="name">libreria.libro.search</field>
+            <field name="model">libreria.libro</field>
+
+            <!-- Tipo de vista-->
+            <field name="arch" type="xml">
+                <search>
+                    <!-- Indicamos por que campo se realizara la busqueda -->
+                    <field name="name" string="Titulo"/>
+                    <field name="categoria" string="Categoria"/>
+                    <!-- Escribimos un filtro, en este caso que precio <= 1000  -->
+                    <filter name="barato" domain="[('precio', '&lt;=', 1000)]" />
+
+                </search>
+            </field>
+        </record>
+
+
+        <!-- ACCIONES DE VENTANA-->
+        <record model="ir.actions.act_window" id="libreria.categoria_action_window">
+            <field name="name">Categorias</field>
+            <field name="res_model">libreria.categoria</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="libreria.libro_action_window">
+            <field name="name">Libros</field>
+            <field name="res_model">libreria.libro</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ELEMENTOS DEL MENU-->
+        <menuitem name="Libreria" id="libreria.menu_root"/>
+
+        <menuitem name="Categorias" id="libreria.categoria_menu"
+                  parent="libreria.menu_root" action="libreria.categoria_action_window"/>
+
+        <menuitem name="Libros" id="libreria.libro_menu"
+                  parent="libreria.menu_root" action="libreria.libro_action_window"/>
+
+    </data>
+</odoo>
