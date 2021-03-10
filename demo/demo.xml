@@ -1,25 +1,16 @@
 <odoo>
+       <data>
+        <record model="libreria.libro">
+            <field name="name">El juego de ender</field>
+            <field name="precio">100</field>
+            <field name="categoria">Ciencia Ficción</field>
+        </record>
 
-        <!--  -->
-        <!--   <record id="object0" model="openacademy.openacademy"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object1" model="openacademy.openacademy"> -->
-        <!--     <field name="name">Object 1</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object2" model="openacademy.openacademy"> -->
-        <!--     <field name="name">Object 2</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object3" model="openacademy.openacademy"> -->
-        <!--     <field name="name">Object 3</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object4" model="openacademy.openacademy"> -->
-        <!--     <field name="name">Object 4</field> -->
-        <!--   </record> -->
-        <!--  -->
+        <record model="libreria.libro">
+            <field name="name">Yo, robot</field>
+            <field name="precio">150</field>
+            <field name="categoria">Ciencia Ficción</field>
+        </record>
 
+    </data>
 </odoo>

@@ -12,9 +12,10 @@
         'security/security.xml',
         'views/views.xml',
         'views/template.xml',
-        'reports/reports_libro.xml'
+        'reports/reports_libro.xml',
+        'data/data.xml'
     ],
-    'demo':[
+    'demo': [
         'demo/demo.xml',
     ]
 }
