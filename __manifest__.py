@@ -9,6 +9,7 @@
     'version': '1.0.0',
     'depends': ['base'],
     'data': [
+        'security/security.xml',
         'views/views.xml',
         'views/template.xml',
         'reports/reports_libro.xml'

@@ -131,13 +131,16 @@
         </record>
 
         <!-- ELEMENTOS DEL MENU-->
-        <menuitem name="Libreria" id="libreria.menu_root"/>
+        <!-- Con groups le informamos que grupo de usuarios pueden ver el menu -->
+        <menuitem name="Libreria" id="libreria.menu_root" groups="libreria.libreria_manager"/>
 
         <menuitem name="Categorias" id="libreria.categoria_menu"
-                  parent="libreria.menu_root" action="libreria.categoria_action_window"/>
+                  parent="libreria.menu_root" action="libreria.categoria_action_window"
+                  groups="libreria.libreria_manager"/>
 
         <menuitem name="Libros" id="libreria.libro_menu"
-                  parent="libreria.menu_root" action="libreria.libro_action_window"/>
+                  parent="libreria.menu_root" action="libreria.libro_action_window"
+                  groups="libreria.libreria_manager"/>
 
     </data>
 </odoo>
