@@ -8,22 +8,50 @@
                 menu="True"
                 name="libreria.report_libro_view"
                 file="libreria.report_libro_view"
-                report_type="qweb-pdf"/>
+                report_type="qweb-html"/>
 
         <template id="report_libro_view">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="libro">
                     <t t-call="web.external_layout">
                         <div class="page">
-                            <h2 t-field="libro.name"/>
-                            <div class="">
-                                <strong>Precio: </strong>
-                                <span t-field="libro.precio"/>
+                            <h2 t-field="libro.name" class="text-center text-success"/>
+                            <hr width="70%" align="center" size="20"/>
+
+                            <div class="row" style="margin-top:3rem">
+                                <div class="col-sm-6">
+                                    <strong>Precio: </strong>
+                                    <span t-field="libro.precio"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <strong>Ejemplares: </strong>
+                                    <span t-field="libro.ejemplares"/>
+                                </div>
                             </div>
-                            <div>
-                                <strong>Ejemplares: </strong>
-                                <span t-field="libro.ejemplares"/>
+
+                            <div class="row" style="margin-top:3rem">
+                                <div class="col-sm-6">
+                                    <strong>Fecha: </strong>
+                                    <span t-field="libro.fecha"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <strong>Estado: </strong>
+                                    <span t-field="libro.estado"/>
+                                </div>
                             </div>
+
+                            <div class="row" style="margin-top:3rem">
+
+                                <div class="col-sm-6">
+                                    <strong>Categoria: </strong>
+                                    <span t-field="libro.categoria"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <strong>Importe total: </strong>
+                                    <span t-field="libro.importeTotal"/>
+                                </div>
+                            </div>
+
                         </div>
                     </t>
                 </t>
