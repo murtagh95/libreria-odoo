@@ -11,11 +11,15 @@
 
             <!-- Tipo de vista-->
             <field name="arch" type="xml">
-                <!-- Vista de tipo arbol-->
-                <tree>
+                <!-- Vista de tipo arbol, decorada-->
+                <tree
+                     decoration-bf="disponible == False"
+                     decoration-success="disponible == True">
+
                     <!-- Definimos que tipo de campos tendra la vista-->
                     <field name="name"></field>
                     <field name="description"></field>
+                    <field name="disponible"></field>
                 </tree>
             </field>
         </record>
@@ -36,6 +40,7 @@
                         <!-- Definimos que tipo de campos tendra la vista-->
                         <field name="name"></field>
                         <field name="description"></field>
+                        <field name="disponible"></field>
                         <!-- Agregamos una vista de tipo arbol -->
                         <field name="libros">
                             <tree>
@@ -84,16 +89,35 @@
                 <!-- Vista de tipo formulario-->
                 <form>
                     <group colspan="2" col="2">
+                        <field name="imagen" widget="image" class="oe_avatar"></field>
+                    </group>
+                    <group colspan="4" col="4">
                         <!-- Definimos que tipo de campos tendra la vista-->
                         <field name="name"></field>
                         <field name="precio"></field>
                         <field name="ejemplares"></field>
                         <field name="fecha"></field>
                         <field name="segunMano"></field>
-                        <field name="estado"></field>
-                        <field name="categoria"></field>
-                        <field name="importeTotal"></field>
+                        <field name="estado" widget="statusbar" clickable="True"></field>
+                        <field name="categoria" domain="[('disponible', '=', True)]"></field>
+                        <field name="puntuacion" widget="priority"></field>
+                        <field name="country_id"></field>
                     </group>
+
+                    <notebook>
+                            <page name="page_lines" string="Total stock">
+                                <form>
+                                    <field name="importeTotal"></field>
+                                </form>
+                            </page>
+                            <page name="Descripción" string="Descripción">
+                                <form>
+                                    <field name="descripcion" ></field>
+                                </form>
+                            </page>
+
+                    </notebook>
+
                 </form>
             </field>
         </record>

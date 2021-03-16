@@ -5,11 +5,13 @@
         <record model="libreria.categoria">
             <field name="name">Novela</field>
             <field name="description">Libros que te haran llorar</field>
+            <field name="disponible">True</field>
         </record>
 
         <record model="libreria.categoria">
             <field name="name">Ciencia Ficción</field>
             <field name="description">Libros con los cuales imaginaras muchas aventuras</field>
+            <field name="disponible">True</field>
         </record>
     </data>
 </odoo>
