@@ -9,7 +9,7 @@ class libreria_categoria(models.Model):
     description = fields.Text(string="Descripción")
     # Debemos informar con que campo se relaciona, tiene que ser el que tiene el Many2one
     libros = fields.One2many("libreria.libro", "categoria", string="Libros")
-    disponible = fields.Boolean(string="Disponible", required=True, help="Indicar si esta categoría esta disponible para su uso")
+    disponible = fields.Boolean(string="Disponible", help="Indicar si esta categoría esta disponible para su uso")
 
 
 class libreria_libro(models.Model):

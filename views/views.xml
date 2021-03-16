@@ -122,6 +122,19 @@
             </field>
         </record>
 
+        <!-- VISTA TIPO CALENDARIO PARA EL MODELO LIBROS -->
+        <record model="ir.ui.view" id="libreria.libro_calendar">
+            <field name="name">libreria.libro.calendar</field>
+            <field name="model">libreria.libro</field>
+            <field name="arch" type="xml">
+                <calendar date_start="fecha"
+                          event_open_popup="True"
+                          mode="month">
+                    <field name="name"/>
+                    <field name="ejemplares"/>
+                </calendar>
+            </field>
+        </record>
 
         <!-- Vista de tipo busqueda -->
         <record model="ir.ui.view" id="libreria.libro_search_view">
@@ -151,8 +164,9 @@
         <record model="ir.actions.act_window" id="libreria.libro_action_window">
             <field name="name">Libros</field>
             <field name="res_model">libreria.libro</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
         </record>
+
 
         <!-- ELEMENTOS DEL MENU-->
         <!-- Con groups le informamos que grupo de usuarios pueden ver el menu -->
