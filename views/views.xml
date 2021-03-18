@@ -36,20 +36,26 @@
             <field name="arch" type="xml">
                 <!-- Vista de tipo formulario-->
                 <form>
-                    <group colspan="2" col="2">
-                        <!-- Definimos que tipo de campos tendra la vista-->
-                        <field name="name"></field>
-                        <field name="description"></field>
-                        <field name="disponible"></field>
-                        <!-- Agregamos una vista de tipo arbol -->
-                        <field name="libros">
-                            <tree>
-                                <field name="name"></field>
-                                <field name="precio"></field>
-                                <field name="ejemplares"></field>
-                            </tree>
-                        </field>
-                    </group>
+
+                    <sheet>
+                        <group name="group_form_categoria" colspan="2" col="2">
+                            <!-- Definimos que tipo de campos tendra la vista-->
+                            <field name="name"></field>
+                            <field name="description"></field>
+                            <field name="disponible"></field>
+                            <!-- Agregamos una vista de tipo arbol -->
+                            <field name="libros"
+                                    attrs="{'invisible': [('disponible', '=', False)]}"
+                            >
+                                <tree>
+                                    <field name="name"></field>
+                                    <field name="precio"></field>
+                                    <field name="ejemplares"></field>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+
                 </form>
             </field>
         </record>
@@ -88,35 +94,41 @@
             <field name="arch" type="xml">
                 <!-- Vista de tipo formulario-->
                 <form>
-                    <group colspan="2" col="2">
-                        <field name="imagen" widget="image" class="oe_avatar"></field>
-                    </group>
-                    <group colspan="4" col="4">
-                        <!-- Definimos que tipo de campos tendra la vista-->
-                        <field name="name"></field>
-                        <field name="precio"></field>
-                        <field name="ejemplares"></field>
-                        <field name="fecha"></field>
-                        <field name="segunMano"></field>
-                        <field name="estado" widget="statusbar" clickable="True"></field>
-                        <field name="categoria" domain="[('disponible', '=', True)]"></field>
-                        <field name="puntuacion" widget="priority"></field>
-                        <field name="country_id"></field>
-                    </group>
 
-                    <notebook>
-                            <page name="page_lines" string="Total stock">
-                                <form>
-                                    <field name="importeTotal"></field>
-                                </form>
-                            </page>
-                            <page name="Descripción" string="Descripción">
-                                <form>
-                                    <field name="descripcion" ></field>
-                                </form>
-                            </page>
+                    <sheet>
+                        <group name="imgae_top" colspan="2" col="2">
+                            <field name="imagen" widget="image" class="oe_avatar"></field>
+                        </group>
 
-                    </notebook>
+                        <group name="group_form_libro" string="Caracteristicas" colspan="4" col="4">
+                            <!-- Definimos que tipo de campos tendra la vista-->
+                            <field name="name"/>
+                            <field name="precio"/>
+                            <field name="ejemplares"/>
+                            <field name="fecha"/>
+                            <field name="categoria" domain="[('disponible', '=', True)]"/>
+                            <field name="puntuacion" widget="priority"/>
+                            <field name="country_id"/>
+                            <field name="segunMano"/>
+                            <field name="estado" widget="statusbar" clickable="True"
+                                   attrs="{'invisible': [('segunMano', '=', False)], 'required': [('segunMano', '=', True)]}" />
+                        </group>
+
+                        <notebook>
+                                <page name="page_lines" string="Total stock">
+                                    <form>
+                                        <field name="importeTotal"/>
+                                    </form>
+                                </page>
+                                <page name="Descripción" string="Descripción">
+                                    <form>
+                                        <field name="descripcion" />
+                                    </form>
+                                </page>
+
+                        </notebook>
+                    </sheet>
+
 
                 </form>
             </field>
